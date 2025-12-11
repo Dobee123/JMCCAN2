@@ -3,114 +3,109 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>제68대 원우회장 기호2번 김소현 – 공약 살아남기</title>
+  <title>제68대 원우회장 기호2번 김소현의 언홍원 살아남기</title>
   <style>
-    :root {
-      --blue: #0d6efd;
-      --white: #ffffff;
-      --shadow: rgba(0,0,0,0.25);
-    }
-    html, body { height: 100%; margin: 0; }
+    :root { --blue:#0d6efd; --white:#ffffff; --shadow:rgba(0,0,0,0.25); }
+    html, body { height:100%; margin:0; }
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
-      background: var(--blue);
-      color: var(--white);
-      display: grid;
-      place-items: center;
+      background:#ffffff; /* 메인 배경 흰색 */
+      color:#0d6efd;      /* 기본 글자 파란색 */
+      display:grid; place-items:center;
     }
-    .container {
-      text-align: center;
-      max-width: 960px;
-      padding: 40px 24px;
+    .container { text-align:center; max-width:960px; padding:40px 24px; }
+    .title-oneline{
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      background:var(--blue); color:var(--white);
+      padding:10px 16px; border-radius:10px; display:inline-block;
+      font-size:clamp(22px,4.6vw,40px); line-height:1.2; margin:0 0 16px;
+      text-shadow:0 4px 12px var(--shadow);
     }
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(24px, 5vw, 44px);
-      letter-spacing: 0.5px;
-      line-height: 1.2;
-      text-shadow: 0 4px 12px var(--shadow);
-    }
-    .subtitle { display:none; }
-    .cta {
-      display: inline-block;
-      border: 2px solid var(--white);
-      border-radius: 12px;
-      padding: 12px 18px;
-      cursor: pointer;
-      user-select: none;
-      transition: transform .1s ease, background .2s ease;
-    }
-    .cta:hover { transform: translateY(-1px); background: rgba(255,255,255,0.08); }
+    /* 시작 버튼: 가로폭 1/4, 가운데 정렬 */
+    .cta{display:block; border:2px solid var(--blue); background:var(--blue); color:var(--white);
+         border-radius:12px; padding:10px 12px; cursor:pointer; user-select:none;
+         transition:transform .1s ease, background .2s ease; margin:24px auto 0;
+         width:25%; min-width:120px; text-align:center;}
+    .cta:hover{transform:translateY(-1px); background:#0b5ed7;}
 
-    .choices { display: none; gap: 16px; justify-content: center; margin-top: 28px; }
-    .btn {
-      font-weight: 700;
-      font-size: clamp(18px, 3.4vw, 28px);
-      padding: 16px 32px;
-      border-radius: 14px;
-      border: 2px solid var(--white);
-      color: var(--white);
-      background: transparent;
-      cursor: pointer;
-      box-shadow: 0 6px 18px var(--shadow);
-      transition: transform .06s ease, background .2s ease;
-    }
-    .btn:active { transform: translateY(1px); }
-    .btn:hover { background: rgba(255,255,255,0.10); }
+    .btn{ font-weight:700; font-size:clamp(18px,3.4vw,28px); padding:14px 28px; border-radius:12px;
+          border:2px solid var(--blue); color:var(--blue); background:transparent; cursor:pointer;
+          box-shadow:0 6px 18px var(--shadow); transition:transform .06s ease, background .2s ease, color .2s ease; }
+    .btn:hover{ background:rgba(13,110,253,0.08); }
 
-    .result { display:none; margin-top: 28px; font-size: clamp(18px, 2.8vw, 26px); }
-
-    .next {
-      display:none;
-      margin-top: 18px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 2px solid var(--white);
-      background: rgba(255,255,255,0.1);
-      color: var(--white);
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .title-oneline{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .body-white{background:#ffffff;color:#111}
-  .page1 img{width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.15);margin-bottom:18px}
-  .page1 .p1-text{font-size:clamp(16px,3.5vw,24px);margin:12px 0 20px;text-align:center}
-  .page1 .choices{display:flex;gap:14px;justify-content:center}
-  .body-white .btn{border-color:#0d6efd;color:#0d6efd}
-</style>
+    .page1 img{ width:260px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); margin-bottom:18px; }
+    .p1-text{ font-size:clamp(16px,3.2vw,22px); margin:12px 0 20px; text-align:center; color:#0d6efd; }
+    .choices{ display:flex; gap:14px; justify-content:center; }
+  </style>
 </head>
 <body>
-  <div class="container"><div id="page0">
+  <div class="container">
+    <!-- page0 (메인) -->
+    <div id="page0">
       <img src="https://i.imgur.com/nXKb1fu.jpeg" alt="김소현 후보 메인" style="width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);margin-bottom:24px;" />
-      <h1 class="title-oneline">기호2번 김소현과 함께하는 언홍원 살아남기</h1>
-      <div id="clickToStart" class="cta" role="button" aria-label="시작하기">시작</div>
+      <h1 class="title-oneline">제68대 원우회장 기호2번 김소현의 언홍원 살아남기</h1>
+      <div id="clickToStart" class="cta" role="button" tabindex="0" aria-label="시작하기">시작</div>
     </div>
-    <!-- page1: 시작 클릭 후 진입 화면 -->
+
+    <!-- page1 (시작 후) -->
     <div id="page1" class="page1" style="display:none;">
-      <img src="https://imgur.com/8fyCpIu.jpeg alt="page1 이미지" />
-      <div class="p1-text">언론홍보대학원에 입학한 당신, 빌링슬리관에 들어가시겠습니까?</div>
+      <img src="https://i.imgur.com/8fyCpIu.jpeg" alt="page1 이미지" />
+      <div class="p1-text" style="color:#000000;font-weight:700;">언론홍보대학원에 입학한 당신, 빌링슬리관에 들어가시겠습니까?</div>
       <div class="choices">
-        <button id="p1-yes" class="btn" aria-label="예">예</button>
-        <button id="p1-no" class="btn" aria-label="아니오">아니오</button>
+        <button id="p1-yes" class="btn" aria-label="예">들어간다</button>
+        <button id="p1-no" class="btn" aria-label="아니오">나간다</button>
       </div>
     </div>
-  </div><script>
-  const startBtn = document.getElementById('clickToStart');
-  const page0 = document.getElementById('page0');
-  const page1 = document.getElementById('page1');
+  </div>
 
-  startBtn.addEventListener('click', () => {
-    page0.style.display = 'none';
-    page1.style.display = 'block';
-    document.body.classList.add('body-white');
-  });
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const startBtn = document.getElementById('clickToStart');
+    const page0 = document.getElementById('page0');
+    const page1 = document.getElementById('page1');
+    const yesBtn = document.getElementById('p1-yes');
+    const noBtn  = document.getElementById('p1-no');
 
-  document.getElementById('p1-yes').addEventListener('click', () => {
-    alert('예 선택! (다음 시나리오를 여기에 이어주세요)');
+    function goPage1(){
+      page0.style.display = 'none';
+      page1.style.display = 'block';
+    }
+    startBtn.addEventListener('click', goPage1);
+    startBtn.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' ') goPage1(); });
+
+    // 예: 모기 이벤트 + 다음 버튼
+    yesBtn.addEventListener('click', function(){
+      page1.innerHTML = `
+        <img src="https://i.imgur.com/0O18qCK.jpeg" alt="대왕 모기 상황" style="width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.15);margin-bottom:18px;" />
+        <div class="p1-text" style="color:#000000;text-align:center;">
+          언홍원 대왕 모기에 물린 당신은 언홍원 휴게실에 들어가 버물리를 발랐습니다.<br/><br/>
+          <b>김소현 후보의 공약 '열린 언홍원&원우회: 언홍원 휴게실 개선 및 개방, 생수 및 비상약 등 편의 보강'</b>
+        </div>
+        <div style="text-align:center;">
+          <button id="p1-next" class="btn" aria-label="다음">다음</button>
+        </div>
+      `;
+      const nextBtn = document.getElementById('p1-next');
+      nextBtn.addEventListener('click', function(){
+        alert('다음 단계로 진행합니다. (여기에 다음 시나리오를 이어주세요)');
+      });
+    });
+
+    // 아니오: 종료 화면(검은색 텍스트)
+    noBtn.addEventListener('click', function(){
+      page1.innerHTML = `
+        <div style="text-align:center;color:#000000;font-size:24px;font-weight:700;margin-top:40px;">
+          당신은 언홍원에서 나가버렸습니다
+        </div>
+        <div style="text-align:center;color:#000000;font-size:20px;margin-top:20px;">THE END</div>
+      `;
+    });
+
+    // ---- 간단 테스트 ----
+    console.assert(!!startBtn, '시작 버튼이 존재해야 합니다');
+    console.assert(!!yesBtn && !!noBtn, '페이지1의 예/아니오 버튼이 존재해야 합니다');
+    console.assert(getComputedStyle(page1).display === 'none', '초기에는 page1이 숨김 상태여야 합니다');
   });
-  document.getElementById('p1-no').addEventListener('click', () => {
-    alert('아니오 선택! (다음 시나리오를 여기에 이어주세요)');
-  });
-</script>
+  </script>
 </body>
 </html>

@@ -6,19 +6,21 @@
   <title>제68대 원우회장 기호2번 김소현의 언홍원 살아남기</title>
   <style>
     :root { --blue:#0d6efd; --white:#ffffff; --shadow:rgba(0,0,0,0.25); }
-    html, body { height:100%; margin:0; }
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
-      background:#ffffff; /* 메인 배경 흰색 */
-      color:#0d6efd;      /* 기본 글자 파란색 */
-      display:grid; place-items:center;
+    html, body {
+      height:100%; margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Noto Sans KR,Helvetica,Arial;
+      background:#ffffff; color:#0d6efd; display:grid; place-items:center;
+      overflow-x:hidden;
     }
-    .container { text-align:center; max-width:960px; padding:40px 24px; }
+    .container { text-align:center; width:100%; max-width:560px; padding:24px 16px; box-sizing:border-box; margin:0 auto; }
     .title-oneline{
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      white-space:normal;               /* 여러 줄 허용 */
+      word-break:keep-all;              /* 한국어 가독성 유지 */
+      overflow:visible; text-overflow:clip; max-width:100%;
       background:var(--blue); color:var(--white);
-      padding:10px 16px; border-radius:10px; display:inline-block;
-      font-size:clamp(22px,4.6vw,40px); line-height:1.2; margin:0 0 16px;
+      padding:12px 16px; border-radius:10px; display:block; /* 블록으로 가운데 정렬 */
+      margin:0 auto 16px; text-align:center;
+      font-size:clamp(18px,5.2vw,36px); line-height:1.3;
       text-shadow:0 4px 12px var(--shadow);
     }
     /* 시작 버튼: 가로폭 1/4, 가운데 정렬 */
@@ -33,9 +35,19 @@
           box-shadow:0 6px 18px var(--shadow); transition:transform .06s ease, background .2s ease, color .2s ease; }
     .btn:hover{ background:rgba(13,110,253,0.08); }
 
-    .page1 img{ width:260px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); margin-bottom:18px; }
-    .p1-text{ font-size:clamp(16px,3.2vw,22px); margin:12px 0 20px; text-align:center; color:#0d6efd; }
+    .page1 img{ width:min(260px, 90%); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); margin-bottom:18px; }
+    .p1-text{
+      font-size:clamp(16px,3.2vw,22px);
+      margin:12px 0 20px;
+      text-align:center;
+      color:#000000;
+      white-space:normal;        /* 모든 줄 표시 */
+      overflow:visible;          /* 잘림 제거 */
+      text-overflow:clip;        /* 말줄임 제거 */
+      line-height:1.45;
+    }
     .choices{ display:flex; gap:14px; justify-content:center; }
+    img{max-width:100%;height:auto;}
   </style>
 </head>
 <body>
@@ -50,7 +62,7 @@
     <!-- page1 (시작 후) -->
     <div id="page1" class="page1" style="display:none;">
       <img src="https://i.imgur.com/8fyCpIu.jpeg" alt="page1 이미지" />
-      <div class="p1-text" style="color:#000000;font-weight:700;">언론홍보대학원에 입학한 당신, 빌링슬리관에 들어가시겠습니까?</div>
+      <div class="p1-text" style="color:#000000;font-weight:700;">언론홍보대학원에 입학한 당신</br> 빌링슬리관에 들어가시겠습니까?</div>
       <div class="choices">
         <button id="p1-yes" class="btn" aria-label="예">들어간다</button>
         <button id="p1-no" class="btn" aria-label="아니오">나간다</button>
@@ -66,10 +78,7 @@
     const yesBtn = document.getElementById('p1-yes');
     const noBtn  = document.getElementById('p1-no');
 
-    function goPage1(){
-      page0.style.display = 'none';
-      page1.style.display = 'block';
-    }
+    function goPage1(){ page0.style.display = 'none'; page1.style.display = 'block'; }
     startBtn.addEventListener('click', goPage1);
     startBtn.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' ') goPage1(); });
 
@@ -77,9 +86,9 @@
     yesBtn.addEventListener('click', function(){
       page1.innerHTML = `
         <img src="https://i.imgur.com/0O18qCK.jpeg" alt="대왕 모기 상황" style="width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.15);margin-bottom:18px;" />
-        <div class="p1-text" style="color:#000000;text-align:center;">
-          언홍원 대왕 모기에 물린 당신은 언홍원 휴게실에 들어가 버물리를 발랐습니다.<br/><br/>
-          <b>김소현 후보의 공약 '열린 언홍원&원우회: 언홍원 휴게실 개선 및 개방, 생수 및 비상약 등 편의 보강'</b>
+        <div class="p1-text" style="color:#000000;text-align:center;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.45;">
+          언홍원 대왕 모기에 물린 당신은 <br/>언홍원 휴게실에 들어가 버물리를 발랐습니다.<br/><br/>
+          <strong>김소현 후보의 공약 <br/>‘열린 언홍원&원우회: 언홍원 휴게실 개선 및 개방<br/> 생수 및 비상약 등 편의 보강’</strong>
         </div>
         <div style="text-align:center;">
           <button id="p1-next" class="btn" aria-label="다음">다음</button>

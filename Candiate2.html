@@ -41,7 +41,7 @@
     <!-- page0 (메인) -->
     <div id="page0">
       <img src="https://i.imgur.com/nXKb1fu.jpeg" alt="김소현 후보 메인" style="width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);margin-bottom:24px;" />
-      <h1 class="title-oneline">제68대 원우회장 기호2번 김소현의 언홍원 살아남기</h1>
+      <h1 class="title-oneline">제68대 원우회장 기호2번 <br/>김소현의 언홍원 살아남기</h1>
       <div id="clickToStart" class="cta" role="button" tabindex="0" aria-label="시작하기">시작</div>
     </div>
 
@@ -115,8 +115,40 @@
         page1.innerHTML = `
           <img src="https://i.imgur.com/C1uDrGm.jpeg" alt="3교시 진행" />
           <div class="p2-text">
-          교수님 및 원우분들과 <br>친밀도가 상승하였습니다.<br><br>
-          <strong>김소현 후보의 공약: 네트워킹은 기본, 단단하게 확장하는! <Br/> 교수님들과의 3교시</strong></div>
+            교수님 및 원우분들과 <br>친밀도가 상승하였습니다.<br><br>
+            <strong>김소현 후보의 공약: 네트워킹은 기본, 단단하게 확장하는! <br/> 교수님들과의 3교시</strong>
+          </div>
+          <div style="text-align:center;">
+            <button id="p2-next" class="btn" aria-label="다음">다음</button>
+          </div>
+        `;
+        const p2Next = document.getElementById('p2-next');
+        p2Next.addEventListener('click', renderPage3);
+      });
+    }
+
+    // ---- 페이지3 로직 ----
+    function renderPage3(){
+      page1.className = 'page3';
+      page1.innerHTML = `
+        <img src="https://i.imgur.com/5IGDJ5S.jpeg" alt="고려대 모임 초대" />
+        <div class="p2-text">다음날 고려대 미디어대학원 원우들이 모임에 초대를 하였다</div>
+        <div class="choices">
+          <button id="p3-go" class="btn" aria-label="간다">간다</button>
+          <button id="p3-stay" class="btn" aria-label="가지 않는다">가지 않는다</button>
+        </div>
+      `;
+      document.getElementById('p3-go').addEventListener('click', function(){
+        page1.innerHTML = `
+          <div style="text-align:center;color:#000;font-size:24px;font-weight:700;margin-top:40px;">배신자</div>
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:16px;"><strong>김소현 후보의 공약: 고려대학교와 실무 중심 교류</strong></div>
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:8px;"><strong>전공 및 기수 모임 활성화</strong></div>
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:20px;">THE END</div>
+        `;
+      });
+      document.getElementById('p3-stay').addEventListener('click', function(){
+        page1.innerHTML = `
+          <div style="text-align:center;color:#000;font-size:24px;font-weight:700;margin-top:40px;">기다려봐</div>
         `;
       });
     }

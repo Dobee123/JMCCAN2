@@ -30,7 +30,7 @@
           box-shadow:0 6px 18px var(--shadow); transition:transform .06s ease, background .2s ease, color .2s ease; }
     .btn:hover{ background:rgba(13,110,253,0.08); }
 
-    .page1 img, .page2 img, .page3 img, .page4 img, .final img{
+    .page1 img, .page2 img, .page3 img, .page3-2 img, .page4 img, .final img{
       width:min(260px, 100%); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); margin-bottom:18px;
     }
     .p1-text, .p2-text{
@@ -77,6 +77,8 @@
     const noBtn  = document.getElementById('p1-no');
 
     yesBtn.addEventListener('click', function(){
+      page1.className = 'page1';
+      page1.style.overflowY = 'auto';
       page1.innerHTML = `
         <img src="https://i.imgur.com/0O18qCK.jpeg" alt="대왕 모기 상황" style="width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.15);margin-bottom:18px;" />
         <div class="p1-text">
@@ -100,6 +102,7 @@
     // ---- 페이지2 로직 ----
     function renderPage2(){
       page1.className = 'page2';
+      page1.style.overflowY = 'auto';
       page1.innerHTML = `
         <img src="https://i.imgur.com/lREBNXY.jpeg" alt="수업 장면" />
         <div class="p2-text">수업을 듣는 도중, 교수님이 3교시를 요청했다. 나의 결정은?</div>
@@ -133,6 +136,7 @@
     // ---- 페이지3 로직 ----
     function renderPage3(){
       page1.className = 'page3';
+      page1.style.overflowY = 'auto';
       page1.innerHTML = `
         <img src="https://i.imgur.com/5IGDJ5S.jpeg" alt="고려대 모임 초대" />
         <div class="p2-text">다음날 고려대 미디어대학원 원우들이 모임에 초대를 하였다</div>
@@ -145,20 +149,60 @@
         page1.innerHTML = `
           <div style="text-align:center;color:#000;font-size:24px;font-weight:700;margin-top:40px;">배신자</div>
           <div style="text-align:center;color:#000;font-size:20px;margin-top:16px;"><strong>김소현 후보의 공약: 고려대학교와 실무 중심 교류</strong></div>
-          <div style="text-align:center;color:#000;font-size:20px;margin-top:8px;"><strong>전공 및 기수 모임 활성화</strong></div>
-          <div style="text-align:center;color:#000;font-size:20px;margin-top:20px;">THE END</div>
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:8px;"><strong>전공 및 기수 모임 활성화</div>
+          <div style="text-align:center;margin-top:20px;">
+            <button id="p3-go-next" class="btn" aria-label="다음">다음</button>
+          </div>
         `;
+        document.getElementById('p3-go-next').addEventListener('click', renderPage3_2);
       });
       document.getElementById('p3-stay').addEventListener('click', function(){
+        renderPage3_2();
+      });
+    }
+
+    // ---- 페이지3-2 로직 ----
+    function renderPage3_2(){
+      page1.className = 'page3-2';
+      page1.style.overflowY = 'auto';
+      page1.innerHTML = `
+        <img src="https://i.imgur.com/Rpb4eTE.jpeg" alt="같은 동문 발견" />
+        <div class="p2-text">저 멀리 같은 동문이 있는 것 같다.<br/>한번 가볼까?</div>
+        <div class="choices">
+          <button id="p32-card" class="btn" aria-label="가서 명함을 내민다.">가서 명함을 내민다.</button>
+          <button id="p32-jacket" class="btn" aria-label="언홍원 과잠을 입는다">언홍원 과잠을 입는다</button>
+        </div>
+      `;
+      // 명함 선택 → 종료 페이지
+      document.getElementById('p32-card').addEventListener('click', function(){
         page1.innerHTML = `
-          <div style="text-align:center;color:#000;font-size:20px;font-weight:700;margin-top:24px;">
-            학교를 열심히 다녔더니 <br/>어느덧 제68대 총원우회장 선거가 시작되었다. <br/><br/>당신의 선택은···?
+          <div style="text-align:center;color:#000;font-size:20px;font-weight:700;margin-top:24px;">동문께서 너무 바빠</div>
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:6px;"><strong>명함만 받고 가버렸습니다.</strong></div>
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:18px;">THE END</div>
+        `;
+      });
+      // 과잠 선택 → 안내 문구 → 다음 → 페이지4
+      document.getElementById('p32-jacket').addEventListener('click', function(){
+        page1.innerHTML = `
+          <div style="text-align:center;color:#000;font-size:20px;margin-top:24px;">
+            동문께서 언홍원 과잠을 보고 <br/>친절히 다가와주셔서 이야기를 나누었다.<br/><br/>
+            <strong>김소현 후보의 공약: 재학생x졸업생으로 졸업 후에도 <br/>끈끈하게 연결되는 언홍원 총동문회와 협업 강화</strong>
           </div>
-          <div style="text-align:center;margin-top:18px;">
-            <button id="p3-next" class="btn" aria-label="다음">다음</button>
+          <div style="text-align:center;margin-top:22px;">
+            <button id="p32-next" class="btn" aria-label="다음">다음</button>
           </div>
         `;
-        document.getElementById('p3-next').addEventListener('click', renderPage4);
+        document.getElementById('p32-next').addEventListener('click', function(){
+          page1.innerHTML = `
+            <div style="text-align:center;color:#000;font-size:20px;font-weight:700;margin-top:24px;">
+              학교를 열심히 다녔더니 <br/>어느덧 제68대 총원우회장 선거가 시작되었다.<br/><br/>당신의 선택은···?
+            </div>
+            <div style="text-align:center;margin-top:18px;">
+              <button id="p3to4-next" class="btn" aria-label="다음">다음</button>
+            </div>
+          `;
+          document.getElementById('p3to4-next').addEventListener('click', renderPage4);
+        });
       });
     }
 
@@ -188,7 +232,9 @@
     // ---- 간단 테스트 ----
     console.assert(!!startBtn, '시작 버튼이 존재해야 합니다');
     console.assert(!!yesBtn && !!noBtn, '페이지1의 예/아니오 버튼이 존재해야 합니다');
+    console.assert(typeof renderPage2 === 'function' && typeof renderPage3 === 'function' && typeof renderPage3_2 === 'function' && typeof renderPage4 === 'function', '페이지 전환 함수들이 정의되어야 합니다');
     console.assert(getComputedStyle(page1).display === 'none', '초기에는 page1이 숨김 상태여야 합니다');
+    console.assert(document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1, '가로 스크롤이 없어야 합니다');
   });
   </script>
 </body>

@@ -30,9 +30,14 @@
           box-shadow:0 6px 18px var(--shadow); transition:transform .06s ease, background .2s ease, color .2s ease; }
     .btn:hover{ background:rgba(13,110,253,0.08); }
 
-    .page1 img, .page2 img{ width:min(260px, 90%); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); margin-bottom:18px; }
-    .p1-text, .p2-text{ font-size:clamp(16px,3.2vw,22px); margin:12px 0 20px; text-align:center; color:#000; white-space:normal; overflow:visible; text-overflow:clip; line-height:1.45; }
-    .choices{ display:flex; gap:14px; justify-content:center; }
+    .page1 img, .page2 img, .page3 img, .page4 img, .final img{
+      width:min(260px, 100%); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15); margin-bottom:18px;
+    }
+    .p1-text, .p2-text{
+      font-size:clamp(16px,3.2vw,22px); margin:12px 0 20px; text-align:center; color:#000;
+      white-space:normal; overflow:visible; text-overflow:clip; line-height:1.45;
+    }
+    .choices{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
     img{max-width:100%;height:auto;}
   </style>
 </head>
@@ -76,14 +81,13 @@
         <img src="https://i.imgur.com/0O18qCK.jpeg" alt="대왕 모기 상황" style="width:260px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.15);margin-bottom:18px;" />
         <div class="p1-text">
           언홍원 대왕 모기에 물린 당신은 <br>언홍원 휴게실에 들어가 버물리를 발랐습니다.<br><br>
-          <strong>김소현 후보의 공약: 열린 언홍원&원우회 <br/> 언홍원 휴게실 개선 및 개방, 생수 및 비상약 등 편의 보강’</strong>
+          <strong>김소현 후보의 공약: 열린 언홍원&amp;원우회 <br/> 언홍원 휴게실 개선 및 개방, 생수 및 비상약 등 편의 보강</strong>
         </div>
         <div style="text-align:center;">
           <button id="p1-next" class="btn" aria-label="다음">다음</button>
         </div>
       `;
-      const nextBtn = document.getElementById('p1-next');
-      nextBtn.addEventListener('click', renderPage2);
+      document.getElementById('p1-next').addEventListener('click', renderPage2);
     });
 
     noBtn.addEventListener('click', function(){
@@ -122,8 +126,7 @@
             <button id="p2-next" class="btn" aria-label="다음">다음</button>
           </div>
         `;
-        const p2Next = document.getElementById('p2-next');
-        p2Next.addEventListener('click', renderPage3);
+        document.getElementById('p2-next').addEventListener('click', renderPage3);
       });
     }
 
@@ -148,9 +151,38 @@
       });
       document.getElementById('p3-stay').addEventListener('click', function(){
         page1.innerHTML = `
-          <div style="text-align:center;color:#000;font-size:24px;font-weight:700;margin-top:40px;">기다려봐</div>
+          <div style="text-align:center;color:#000;font-size:20px;font-weight:700;margin-top:24px;">
+            학교를 열심히 다녔더니 <br/>어느덧 제68대 총원우회장 선거가 시작되었다. <br/><br/>당신의 선택은···?
+          </div>
+          <div style="text-align:center;margin-top:18px;">
+            <button id="p3-next" class="btn" aria-label="다음">다음</button>
+          </div>
         `;
+        document.getElementById('p3-next').addEventListener('click', renderPage4);
       });
+    }
+
+    // ---- 페이지4 로직 (선택 화면) ----
+    function renderPage4(){
+      page1.className = 'page4';
+      page1.style.overflowY = 'auto';
+      page1.innerHTML = `
+        <img src="https://i.imgur.com/nXKb1fu.jpeg" alt="후보 이미지" />
+        <div class="p2-text"></div>
+        <div class="choices">
+          <button id="p4-two" class="btn" aria-label="기호 2번">기호 2번</button>
+          <button id="p4-name" class="btn" aria-label="김소현">김소현</button>
+        </div>
+      `;
+      const goFinal = () => {
+        page1.className = 'final';
+        page1.style.overflowY = 'auto';
+        page1.innerHTML = `
+          <img src="https://imgur.com/X88HfsB.jpeg" alt="최종 이미지" style="max-width:100%;height:auto;" />
+        `;
+      };
+      document.getElementById('p4-two').addEventListener('click', goFinal);
+      document.getElementById('p4-name').addEventListener('click', goFinal);
     }
 
     // ---- 간단 테스트 ----
